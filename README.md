@@ -146,6 +146,13 @@ For web preview:
 npm run web
 ```
 
+### Running checks locally
+
+```sh
+npm run lint       # ESLint (same as CI)
+npm run typecheck  # TypeScript (same as CI)
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Development Builds
@@ -217,14 +224,24 @@ See the [open issues](https://github.com/Error-By-Night/ColorBeta/issues) for a 
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag `enhancement`.
-Don't forget to give the project a star! Thanks again!
+### Development workflow
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Develop **one feature per branch**. Each feature gets its own pull request to `main`:
+
+1. Update `main`: `git checkout main && git pull`
+2. Create a feature branch: `git checkout -b feature/<short-description>`
+3. Implement the feature and run checks locally:
+   ```sh
+   npm run lint
+   npm run typecheck
+   ```
+4. Commit and push: `git push -u origin feature/<short-description>`
+5. Open a pull request to `main` — CI runs ESLint and TypeScript checks automatically
+6. Merge when CI passes, then delete the branch
+7. Start the next feature from updated `main` (never branch from another feature branch)
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also open an issue with the tag `enhancement`.
+Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

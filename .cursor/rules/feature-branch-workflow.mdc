@@ -1,0 +1,42 @@
+---
+description: Develop one feature per branch with PRs to main
+alwaysApply: true
+---
+
+# Feature Branch Workflow
+
+Develop features one at a time. Each feature gets its own branch and pull request to `main`.
+
+## Before starting work
+
+1. Ensure `main` is up to date: `git checkout main && git pull`
+2. Create a branch from `main`: `git checkout -b feature/<short-description>`
+   - Examples: `feature/hold-color-sampling`, `feature/wall-highlighting`
+
+## During development
+
+- Keep the branch focused on **one feature** — no unrelated changes
+- Run checks locally before pushing:
+  ```sh
+  npm run lint
+  npm run typecheck
+  ```
+- Commit with clear messages describing the feature
+
+## When the feature is ready
+
+1. Push the branch: `git push -u origin feature/<short-description>`
+2. Open a PR to `main` — CI runs automatically on the PR
+3. Wait for CI to pass (ESLint + TypeScript)
+4. Merge the PR when ready
+5. Delete the branch after merge
+
+## Starting the next feature
+
+Always branch from updated `main`, never from another feature branch:
+
+```sh
+git checkout main
+git pull
+git checkout -b feature/<next-feature>
+```
